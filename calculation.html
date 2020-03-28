@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>AAC Calculation Software</title>
+    <!-- Bootstrap -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Tongji AAC</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="yanjiulingyu.html">研究领域</a></li>
+                <li><a href="#">成果</a></li>
+                <li class="active"><a href="calculation.html">板材标准计算软件</a></li>
+                <li><a href="contact.html">联系方法</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login.html">登陆</a></li>
+                <li><a href="register.html">注册</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <div class="row text-center">
+        <h1>AAC板结构性能计算软件</h1>
+    </div>
+
+    <div class="row text-center">
+        <div class="btn-group" data-toggle="buttons" id="type">
+            <label class="btn btn-primary active" data-toggle="collapse" href="#collapselouban" aria-expanded="true"
+                   aria-controls="collapselouban">
+                <input type="radio" >楼板
+            </label>
+            <label class="btn btn-primary" data-toggle="collapse" href="#collapsewumianban" aria-expanded="false"
+                   aria-controls="collapsewumianban">
+                <input type="radio">屋面板
+            </label>
+            <label class="btn btn-primary" data-toggle="collapse" href="#collapsewaiqiangban" aria-expanded="false"
+                   aria-controls="collapsewaiqiangban">
+                <input type="radio">外墙板
+            </label>
+            <label class="btn btn-primary" data-toggle="collapse" href="#collapsegeqiangban" aria-expanded="false"
+                   aria-controls="collapsegeqiangban">
+                <input type="radio">隔墙板
+            </label>
+        </div>
+    </div>
+
+    <div id="type_id">
+        <!--楼板l-->
+        <div class="collapse in" id="collapselouban">
+            <div class="well">
+                <h3>基础参数</h3>
+                <h5>1. 承载力允许值[Q<sub>z</sub>] (单位:N/m<sup>2</sup>或Pa)</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_l" checked value="2000">2000
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_l" value="2200">2200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_l" value="2600">2600
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_l" value="2900">2900
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_l" value="3200">3200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_l" value="3500">3500
+                    </label>
+                    <input style="width:70px;height: 35.5px;text-align: center " name="Qz_l" type="text"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+
+                <h5>2. 干密度等级</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_l" value="5500" checked>B04
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_l" value="6850">B05
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_l" value="8250">B06
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_l" value="9600">B07
+                    </label>
+                </div>
+
+                <h5>3. 板材长度L/mm</h5>
+                <div class="btn-group">
+
+                    <label class="btn btn-default">
+                        <input type="radio" name="length_l" checked value="1800">1800
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="length_l" value="6000">6000
+                    </label>
+                    <input type="text" name="length_l" style="width: 70px;height:35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>4. 板材宽度B/mm</h5>
+                <div class="btn-group">
+
+                    <label class="btn btn-default">
+                        <input type="radio" name="width_l" checked value="600">600
+                    </label>
+                    <input type="text" name="width_l" style="width: 70px;height: 35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>5. 板材厚度D/mm</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="75" checked>75
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="100">100
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="120">120
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="125">125
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="150">150
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="175">175
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="200">200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="250">250
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_l" value="300">300
+                    </label>
+                    <input type="text" name="depth_l" style="width: 70px;height: 35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>6. 重要性系数&gamma;<sub>0</sub>(无专门规定时，取二级）</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_l" value="1.1">一级
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_l" value="1.0" checked>二级
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_l" value="0.9">三级
+                    </label>
+                </div>
+
+                <h5>7. 承载力检验系数允许值[&gamma;<sub>u</sub>]破坏的检验标志</h5>
+                <div class="btn-group" onclick="gamaudescribe_l()">
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_l" value="1.20" checked>1.20
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_l" value="1.30">1.30
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_l" value="1.60">1.60
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_l" value="1.40">1.40
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_l" value="1.45">1.45
+                    </label>
+                </div>
+                <div id="gamaudesc_l">在受拉主筋的最大裂缝宽度达到1.5mm，或挠度达到跨度的1/50</div>
+
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <h5>8. 加载用加压钢板、滚筒和很亮等设备总重量W，单位牛顿(N)
+                            <input type="text" class="form-control" name="W_l" placeholder="请输入">
+                        </h5>
+                    </div>
+                </div>
+
+                <h3>试验结果</h3>
+                <div class=" form-inline form-group">
+                    <h5>1. 请输入初裂荷载实测值F<sub>cr</sub><sup>0</sup>，单位牛顿(N))
+                        <input type="text" class="form-control" name="Fcr_l" placeholder="请输入">
+                    </h5>
+                </div>
+                <div class="form-inline form-group">
+                    <h5>2. 请输入破坏荷载实测值F<sub>u</sub><sup>0</sup>，单位牛顿(N)
+                        <input type="text" class="form-control" name="Fu_l" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="form-inline form-group">
+                    <h5>3. 板初裂时中部位移记录仪记录的挠度实测值&alpha;<sub>cr,m</sub><sup>0</sup>，单位毫米(mm)
+                        <input type="text" class="form-control" name="alphacrm_l" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="form-inline form-group">
+                    <h5>4. 板初裂时两端位移记录仪记录的挠度实测值的平均值&alpha;<sub>cr,r</sub><sup>0</sup>，单位毫米(mm)
+                        <input type="text" class="form-control" name="alphacrr_l" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6 text-center">
+                        <button class="btn btn-primary btn-group" onclick="calculation_l()">结果判定</button>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 text-center">
+                        <button class="btn btn-primary btn-group" onclick="createreport()">试验结果打印</button>
+                    </div>
+                </div>
+                <br>
+
+                <!--结果判定-->
+                <div class="row text-center panel panel-primary">
+                    <div class="col-lg-4 col-xs-4">
+                        <div class="panel-heading" style="font-weight: bold">初裂荷载检验</div>
+                        <div class="panel-body" id="initialloadtest_l">未检测</div>
+                    </div>
+                    <div class="col-lg-4 col-xs-4 ">
+                        <div class="panel-heading" style="font-weight: bold">破坏荷载检验</div>
+                        <div class="panel-body" id="finalloadtest_l">未检测</div>
+                    </div>
+                    <div class="col-lg-4 col-xs-4">
+                        <div class="panel-heading" style="font-weight: bold">短期挠度检验</div>
+                        <div class="panel-body" id="deflectiontest_l">未检测</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--屋面板w-->
+        <div class="collapse" id="collapsewumianban">
+            <div class="well">
+                <h3>基础参数</h3>
+                <h5>1. 承载力允许值[Q<sub>z</sub>] (单位:N/m<sup>2</sup>或Pa)</h5>
+                <div class="btn-group ">
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_w" checked value="1800">1800
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_w" checked value="2000">2000
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_w" value="2200">2200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_w" value="2600">2600
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_w" value="2900">2900
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_w" value="3200">3200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_w" value="3500">3500
+                    </label>
+                    <input style="width:70px;height: 35.5px;text-align: center; " name="Qz_w" type="text"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+
+                <h5>2. 干密度等级</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_w" value="5500" checked>B04
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_w" value="6850">B05
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_w" value="8250">B06
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_w" value="9600">B07
+                    </label>
+                </div>
+
+                <h5>3. 板材长度L/mm</h5>
+                <div class="btn-group">
+
+                    <label class="btn btn-default">
+                        <input type="radio" name="length_w" checked value="1800">1800
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="length_w" value="6000">6000
+                    </label>
+                    <input type="text" name="length_w" style="width: 70px;height:35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>4. 板材宽度B/mm</h5>
+                <div class="btn-group">
+
+                    <label class="btn btn-default">
+                        <input type="radio" name="width_w" checked value="600">600
+                    </label>
+                    <input type="text" name="width_w" style="width: 70px;height: 35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>5. 板材厚度D/mm</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="75" checked>75
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="100">100
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="120">120
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="125">125
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="150">150
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="175">175
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="200">200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="250">250
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_w" value="300">300
+                    </label>
+                    <input type="text" name="depth_w" style="width: 70px;height: 35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>6. 重要性系数&gamma;<sub>0</sub>(无专门规定时，取二级）</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_w" value="1.1">一级
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_w" value="1.0" checked>二级
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_w" value="0.9">三级
+                    </label>
+                </div>
+
+                <h5>7. 承载力检验系数允许值[&gamma;<sub>u</sub>]破坏的检验标志</h5>
+                <div class="btn-group" onclick="gamaudescribe_w()">
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_w" value="1.20" checked>1.20
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_w" value="1.30">1.30
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_w" value="1.60">1.60
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_w" value="1.40">1.40
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_w" value="1.45">1.45
+                    </label>
+                </div>
+                <div id="gamaudesc_w">在受拉主筋的最大裂缝宽度达到1.5mm，或挠度达到跨度的1/50</div>
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <h5>8. 加载用加压钢板、滚筒和很亮等设备总重量W，单位牛顿(N)
+                            <input type="text" class="form-control" name="W_w" placeholder="请输入">
+                        </h5>
+                    </div>
+                </div>
+
+                <h3>试验结果</h3>
+                <div class=" form-inline form-group">
+                    <h5>1. 请输入初裂荷载实测值F<sub>cr</sub><sup>0</sup>，单位牛顿(N)
+                        <input type="text" class="form-control" name="Fcr_w" placeholder="请输入">
+                    </h5>
+                </div>
+                <div class="form-inline form-group">
+                    <h5>2. 请输入破坏荷载实测值F<sub>u</sub><sup>0</sup>，单位牛顿(N)
+                        <input type="text" class="form-control" name="Fu_w" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="form-inline form-group">
+                    <h5>3. 板初裂时中部位移记录仪记录的挠度实测值&alpha;<sub>cr,m</sub><sup>0</sup>，单位毫米(mm)
+                        <input type="text" class="form-control" name="alphacrm_w" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="form-inline form-group">
+                    <h5>4. 板初裂时两端位移记录仪记录的挠度实测值的平均值&alpha;<sub>cr,r</sub><sup>0</sup>，单位毫米(mm)
+                        <input type="text" class="form-control" name="alphacrr_w" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6 text-center">
+                        <button class="btn btn-primary btn-group" onclick="calculation_w()">结果判定</button>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 text-center">
+                        <button class="btn btn-primary btn-group">试验结果打印</button>
+                    </div>
+                </div>
+                <br>
+
+                <!--结果判定-->
+                <div class="row text-center panel panel-primary">
+                    <div class="col-lg-4 col-xs-4">
+                        <div class="panel-heading" style="font-weight: bold">初裂荷载检验</div>
+                        <div class="panel-body" id="initialloadtest_w">未检测</div>
+                    </div>
+                    <div class="col-lg-4 col-xs-4 ">
+                        <div class="panel-heading" style="font-weight: bold">破坏荷载检验</div>
+                        <div class="panel-body" id="finalloadtest_w">未检测</div>
+                    </div>
+                    <div class="col-lg-4 col-xs-4">
+                        <div class="panel-heading" style="font-weight: bold">短期挠度检验</div>
+                        <div class="panel-body" id="deflectiontest_w">未检测</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--外墙板q-->
+        <div class="collapse" id="collapsewaiqiangban">
+            <div class="well">
+                <h3>基础参数</h3>
+                <h5>1. 承载力允许值[Q<sub>z</sub>] (单位:N/m<sup>2</sup>或Pa)</h5>
+                <div class="btn-group ">
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" checked value="1200">1200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="1400">1400
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="1600">1600
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="1800">1800
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="2000">2000
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="2200">2200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="2600">2600
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="2900">2900
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="3200">3200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="Qz_q" value="3500">3500
+                    </label>
+                    <input style="width:70px;height: 35.5px;text-align: center " name="Qz_q" type="text"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+
+                <h5>2. 干密度等级</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_q" value="5500" checked>B04
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_q" value="6850">B05
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_q" value="8250">B06
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_q" value="9600">B07
+                    </label>
+                </div>
+
+                <h5>3. 板材长度L/mm</h5>
+                <div class="btn-group">
+
+                    <label class="btn btn-default">
+                        <input type="radio" name="length_q" checked value="1800">1800
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="length_q" value="6000">6000
+                    </label>
+                    <input type="text" name="length_q" style="width: 70px;height:35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>4. 板材宽度B/mm</h5>
+                <div class="btn-group">
+
+                    <label class="btn btn-default">
+                        <input type="radio" name="width_q" checked value="600">600
+                    </label>
+                    <input type="text" name="width_q" style="width: 70px;height: 35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>5. 板材厚度D/mm</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="75" checked>75
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="100">100
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="120">120
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="125">125
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="150">150
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="175">175
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="200">200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="250">250
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_q" value="300">300
+                    </label>
+                    <input type="text"  name="depth_q" style="width: 70px;height: 35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>6. 重要性系数&gamma;<sub>0</sub>(无专门规定时，取二级）</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_q" value="1.1">一级
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_q" value="1.0" checked>二级
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gama0_q" value="0.9">三级
+                    </label>
+                </div>
+
+                <h5>7. 承载力检验系数允许值[&gamma;<sub>u</sub>]破坏的检验标志</h5>
+                <div class="btn-group" onclick="gamaudescribe_q()">
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_q" value="1.20" checked>1.20
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_q" value="1.30">1.30
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_q" value="1.60">1.60
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_q" value="1.40">1.40
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="gamau_q" value="1.45">1.45
+                    </label>
+                </div>
+                <div id="gamaudesc_q">在受拉主筋的最大裂缝宽度达到1.5mm，或挠度达到跨度的1/50</div>
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <h5>8. 加载用加压钢板、滚筒和很亮等设备总重量W，单位牛顿(N)
+                            <input type="text" class="form-control" name="W_q" placeholder="请输入">
+                        </h5>
+                    </div>
+                </div>
+
+                <h3>试验结果</h3>
+                <div class=" form-inline form-group">
+                    <h5>1. 请输入初裂荷载实测值F<sub>cr</sub><sup>0</sup>，单位牛顿(N)
+                        <input type="text" class="form-control" name="Fcr_q" placeholder="请输入">
+                    </h5>
+                </div>
+                <div class="form-inline form-group">
+                    <h5>2. 请输入破坏荷载实测值F<sub>u</sub><sup>0</sup>，单位牛顿(N)
+                        <input type="text" class="form-control" name="Fu_q" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="form-inline form-group">
+                    <h5>3. 板初裂时中部位移记录仪记录的挠度实测值&alpha;<sub>cr,m</sub><sup>0</sup>，单位毫米(mm)
+                        <input type="text" class="form-control" name="alphacrm_q" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="form-inline form-group">
+                    <h5>4. 板初裂时两端位移记录仪记录的挠度实测值的平均值&alpha;<sub>cr,r</sub><sup>0</sup>，单位毫米(mm)
+                        <input type="text" class="form-control" name="alphacrr_q" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6 text-center">
+                        <button class="btn btn-primary btn-group" onclick="calculation_q()">结果判定</button>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 text-center">
+                        <button class="btn btn-primary btn-group">试验结果打印</button>
+                    </div>
+                </div>
+                <br>
+
+                <!--结果判定-->
+                <div class="row text-center panel panel-primary">
+                    <div class="col-lg-4 col-xs-4">
+                        <div class="panel-heading" style="font-weight: bold">初裂荷载检验</div>
+                        <div class="panel-body" id="initialloadtest_q">未检测</div>
+                    </div>
+                    <div class="col-lg-4 col-xs-4 ">
+                        <div class="panel-heading" style="font-weight: bold">破坏荷载检验</div>
+                        <div class="panel-body" id="finalloadtest_q">未检测</div>
+                    </div>
+                    <div class="col-lg-4 col-xs-4">
+                        <div class="panel-heading" style="font-weight: bold">短期挠度检验</div>
+                        <div class="panel-body" id="deflectiontest_q">未检测</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--隔墙板g-->
+        <div class="collapse" id="collapsegeqiangban">
+            <div class="well">
+                <h3>基础参数</h3>
+
+                <h5>1. 干密度等级</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_g" value="5500" checked>B04
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_g" value="6850">B05
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_g" value="8250">B06
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="density_g" value="9600">B07
+                    </label>
+                </div>
+
+                <h5>2. 板材长度L/mm</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="length_g" checked value="1800">1800
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="length_g" value="6000">6000
+                    </label>
+                    <input type="text" class="btn btn-default" name="length_g" style="width: 70px;height:35.5px"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>3. 板材宽度B/mm</h5>
+                <div class="btn-group">
+
+                    <label class="btn btn-default">
+                        <input type="radio" name="width_g" checked value="600">600
+                    </label>
+                    <input type="text" name="width_g" style="width: 70px;height: 35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <h5>4. 板材厚度D/mm</h5>
+                <div class="btn-group">
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="75" checked>75
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="100">100
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="120">120
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="125">125
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="150">150
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="175">175
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="200">200
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="250">250
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="depth_g" value="300">300
+                    </label>
+                    <input type="text" name="depth_g" style="width: 70px;height: 35.5px;text-align: center"
+                           placeholder="自定义"
+                           onclick="transform(this.name)">
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <h5>5. 加载用加压钢板、滚筒和很亮等设备总重量W，单位牛顿(N)
+                            <input type="text" class="form-control" name="W_g" placeholder="请输入">
+                        </h5>
+                    </div>
+                </div>
+
+                <h3>试验结果</h3>
+                <div class=" form-inline form-group">
+                    <h5>1. 请输入初裂荷载实测值F<sub>cr</sub><sup>0</sup>，单位牛顿(N)
+                        <input type="text" class="form-control" name="Fcr_g" placeholder="请输入">
+                    </h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6 text-center">
+                        <button class="btn btn-primary btn-group" onclick="calculation_g()">结果判定</button>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 text-center">
+                        <button class="btn btn-primary btn-group">试验结果打印</button>
+                    </div>
+                </div>
+                <br>
+
+                <!--结果判定-->
+                <div class="row text-center panel panel-primary">
+
+                    <div class="panel-heading" style="font-weight: bold">初裂荷载检验</div>
+                    <div class="panel-body" id="initialloadtest_g">未检测</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="js/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/general.js"></script>
+<script src="js/calculation.js"></script>
+<script src="jsPDF/src/jspdf.js"></script>
+<script src="js/default_vfs.js"></script>
+<script src="js/jspdf.customfonts.min.js"></script>
+</body>
+</html>
